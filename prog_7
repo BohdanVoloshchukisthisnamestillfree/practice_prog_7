@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <math.h>
+
+
+// функція перевірки випадку взаємного розташування кіл
+int check(int x1, int x2, int r1, int y1, int y2, int r2)
+  
+  {
+  // обчислюємо відстань між центрами кіл
+  float dist = sqrt(pow((x1 - x2),2) + pow((y1 - y2),2));
+
+  // перевірка на збіг кіл
+  if ((r1 == r2)&&(x1 == x2)&&(y1 == y2))
+  {
+    printf("-1\n");
+  }
+  // перевірка дотику (зовнішніго чи внутрішніго) кіл
+  else if ((dist==(r1+r2))||(dist== abs(r1 - r2)))
+  {
+    printf("one point\n");
+  }
+  // преревірка відсутності перетину
+  else if ((dist>(r1+r2))||(dist < abs(r1 - r2)))
+  {
+    printf("no points\n");
+  }
+  // інакше кола перетинаються в двох точках
+  else{
+    printf("two points\n");
+  }
+  return 0;
+}
+
+int main()
+ {
+  int x1, x2, r1, y1, y2, r2;
+  
+  
+  printf("Enter the coordinates x1, x2, r1, y1, y2, r2: ");
+  scanf("%d %d %d %d %d %d", &x1, &y1, &r1, &x2, &y2, &r2);
+
+  // викликаємо функцію...
+  check(x1, x2, r1, y1, y2, r2);
+
+  return 0;
+}
